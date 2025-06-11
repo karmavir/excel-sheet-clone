@@ -1,3 +1,4 @@
+
 let sheetCount = 0;
 let cellData = {};
 let currentCell = null;
@@ -27,7 +28,7 @@ function createSpreadSheet(containerId) {
       const cell = document.createElement('div');
       cell.className = 'cell';
       cell.contentEditable = true;
-      const cellId = S${sheetCount}_${String.fromCharCode(65 + col)}${row};
+      const cellId = `S${sheetCount}_${String.fromCharCode(65 + col)}${row}`;
       cell.dataset.id = cellId;
 
       cell.addEventListener('click', () => currentCell = cell);
@@ -80,7 +81,7 @@ function exportToCSV() {
   for (let row = 1; row <= rows; row++) {
     let rowData = [];
     for (let col = 0; col < cols; col++) {
-      let cellId = S${sheetCount}_${String.fromCharCode(65 + col)}${row};
+      let cellId = `S${sheetCount}_${String.fromCharCode(65 + col)}${row}`;
       rowData.push(cellData[cellId]?.value || '');
     }
     csv += rowData.join(',') + '\n';
